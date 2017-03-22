@@ -1,0 +1,56 @@
+<% include ./layout/header.html -%>
+    <div class="ui text container">
+        <div class="logo">
+            <img src="images/timg.jpg" />
+        </div>
+        <div class="ui fluid action input">
+            <input id="txtURL" type="text" placeholder="http://short.com">
+            <div id="btn" class="ui button">生成</div>
+        </div>
+        <div id="result"></div>
+    </div>
+    <script id="dataTemp" type="text/x-jquery-tmpl">
+        <table class="ui celled striped table">
+            <thead>
+                <tr>
+                    <th colspan="3">
+                        生成结果
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {{each(i, n) data}}
+                 <tr>
+                    <td class="collapsing">
+                    ${i}
+                    </td>
+                    <td>${n}</td>
+                </tr>
+                {{/each}}
+               
+            </tbody>
+        </table>
+    </script>
+
+
+    <script type="text/javascript">
+        $(function () {
+            $('#btn').click(function () {
+                var url = $('#txtURL').val();
+                $.post('/api/generate', { u: url }, function (res) {
+                    $('#result').html('');
+                    $('#dataTemp').tmpl({ data: res }).appendTo('#result');
+                }).error(function (e) {
+                    var data = { status : e.status};
+                    if (e.status == 412) {
+                        data.message = '输入的参数不正确';
+                    } else {
+                        data.message = e.responseText;
+                    }
+                    $('#result').html('');
+                    $('#dataTemp').tmpl({ data: data }).appendTo('#result');
+                });
+            });
+        });
+    </script>
+    <% include ./layout/footer.html -%>

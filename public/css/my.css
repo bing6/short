@@ -1,0 +1,13 @@
+body > .ui.container {
+margin-top: 3em;
+}
+
+.logo {
+margin-bottom: 3em; text-align: center;
+}
+.logo img {
+width: 50%;height: 50%;
+}
+#result {
+margin-top: 3em;
+}
