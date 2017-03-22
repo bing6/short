@@ -2,6 +2,7 @@ FROM  node:7.7
 
 
 ENV WORKSPACE /srv/www
+ENV VERSION 1.0
 #创建工具目录
 RUN mkdir -p $WORKSPACE
 #设置工具目录
@@ -9,7 +10,7 @@ WORKDIR $WORKSPACE
 #安装PM2
 RUN npm install -g pm2
 #安装程序
-RUN wget https://github.com/bing6/short/archive/1.0.tar.gz -qO - | tar -zxf - -C $WORKSPACE --strip=1
+RUN wget https://github.com/bing6/short/archive/${VERSION}.tar.gz -qO - | tar -zxf - -C $WORKSPACE --strip=1
 #安装依赖
 RUN npm install 
 #设置默认端口
