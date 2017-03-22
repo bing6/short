@@ -7,6 +7,7 @@ const redis = require('redis');
 const wrapper = require('co-redis');
 
 module.exports = function () {
+    
     //环境配置
     let env = process.env.NODE_ENV === 'production' ? require('../config/env/production') : require('../config/env/development');
     //配置路径

@@ -1,7 +1,7 @@
 
 const _ = require('lodash');
 const URL = require('valid-url');
-const Short = require('../libs/Short');
+const Short = require('../libs/short');
 
 function _URLDataToJSON(data) {
     return {
