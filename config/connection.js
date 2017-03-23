@@ -15,7 +15,7 @@ module.exports.connections = {
         user: 'root',
         password: '123456',
         port: 32769,
-        database: 'mydb',
+        database: 'short_db',
         pool: {
             max: 25,
             min: 5,
@@ -24,11 +24,11 @@ module.exports.connections = {
     },
 
     productionMySqlServer: {
-        host: '192.168.2.14',
-        user: 'root',
-        password: '123456',
-        port: 32769,
-        database: 'mydb',
+        host: process.env.SHORT_MYSQL_HOST || 'mysql',
+        user: process.env.SHORT_MYSQL_USER || 'root',
+        password: process.env.SHORT_MYSQL_PASS || '198298',
+        port: process.env.SHORT_MYSQL_PORT || 3306,
+        database: 'short_db',
         pool: {
             max: 25,
             min: 5,
@@ -51,7 +51,7 @@ module.exports.connections = {
     },
 
     productionRedis: {
-        host: '192.168.2.14',
-        port: 32768
+        host: process.env.SHORT_REDIS_HOST || 'redis',
+        port: process.env.SHORT_REDIS_PORT || 6379
     },
 }

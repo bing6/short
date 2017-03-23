@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  mysql: 
+    restart: always
+    image: mysql:latest
+    environment:
+    - MYSQL_ROOT_PASSWORD=198298
+    volumes:
+    - /var/short/mysql:/var/lib/mysql:Z
+    ports:
+    - "20800:3306"
+
+  redis:
+    restart: always
+    image: redis:latest
+    volumes:
+    - /var/short/redis:/var/lib/redis:Z
+
+  short:
+    restart: always
+    image: bing110/short:latest
+    ports:
+      - "3000:3000"
+    depends_on:
+    - redis
+    - mysql
+  
