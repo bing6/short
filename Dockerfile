@@ -3,6 +3,8 @@ FROM  node:7.7
 
 ENV WORKSPACE /srv/www
 ENV VERSION 1.0.2
+ENV NODE_ENV production
+
 #创建工具目录
 RUN mkdir -p $WORKSPACE
 #设置工具目录
