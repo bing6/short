@@ -60,8 +60,8 @@ module.exports = {
                 data = {
                     code: short_code[0],
                     full_code: _.join(short_code, "-"),
-                    url: params.u,
-                    redirect_url: "http://" + ctx.host + "/" + short_code[0]
+                    url: "http://" + ctx.host + "/" + short_code[0],
+                    redirect_url: params.u
                 }
                 try {
                     let result = (await my.db.ShortURL.create(data)).toJSON();
