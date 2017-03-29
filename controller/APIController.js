@@ -7,7 +7,7 @@ function _URLDataToJSON(data) {
     return {
         redirect_url: data.redirect_url,
         url: data.url,
-        qr: data.redirect_url + '?act=qr&t=png',
+        qr: data.url + '?act=qr&t=png',
         code: data.code
     }
 }
