@@ -7,7 +7,7 @@ function _URLDataToJSON(data) {
     return {
         redirect_url: data.redirect_url,
         url: data.url,
-        qr: data.url + '?act=qr&t=png',
+        qr: `${data.url}?act=qr&t=png`,
         code: data.code
     }
 }
@@ -60,7 +60,7 @@ module.exports = {
                 data = {
                     code: short_code[0],
                     full_code: _.join(short_code, "-"),
-                    url: "http://" + ctx.host + "/" + short_code[0],
+                    url: `http://${ctx.host}/${short_code[0]}`,
                     redirect_url: params.u
                 }
                 try {
